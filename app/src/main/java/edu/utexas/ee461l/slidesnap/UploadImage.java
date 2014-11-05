@@ -7,6 +7,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +30,7 @@ public class UploadImage extends AsyncTask<String, String, String>{
         String to = strings[1];
         String filePath = strings[2];
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet("slidespnapurl/ImageUpload");
+        HttpGet httpGet = new HttpGet("http://www.slidesnapserver.appspot.com/ImageUpload");
         try {
             HttpResponse response = httpClient.execute(httpGet);
             HttpEntity urlEntity = response.getEntity();
@@ -44,7 +46,7 @@ public class UploadImage extends AsyncTask<String, String, String>{
             File f = new File(filePath);
             FileBody filebody = new FileBody(f);
             MultipartEntity reqEntity = new MultipartEntity();
-            reqEntity.addPart("file", fileBody);
+            reqEntity.addPart("file", filebody);
             httppost.setEntity(reqEntity);
             response = httpClient.execute(httppost);
             urlEntity = response.getEntity();
@@ -59,8 +61,7 @@ public class UploadImage extends AsyncTask<String, String, String>{
             JSONObject resultJson = new JSONObject(str);
             String blobKey = resultJson.getString("blobKey");
             String servingUrl = resultJson.getString("servingUrl");
-            ImageGAE store = new ImageGAE(from,to,blobKey,servingUrl);
-            ofy().save.entity(store).now();
+            HttpGet httpget = new HttpGet("http://www.slidesnapserver.appspot.com/uploaded?to="+to+"&from="+from+"&blobKey="+blobKey+"&servingUrl="+servingUrl);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

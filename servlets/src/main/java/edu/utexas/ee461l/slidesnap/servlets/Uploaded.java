@@ -15,15 +15,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 /**
  * Created by Thomas on 10/30/2014.
  */
 public class Uploaded extends HttpServlet {
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
+    public void doGet(HttpServletRequest req, HttpServletResponse resp){
+        String to = req.getParameter("to");
+        String from = req.getParameter("from");
+        String blobKey = req.getParameter("blobKey");
+        String servingUrl = req.getParameter("servingUrl");
+        ImageGAE store = new ImageGAE(from,to,blobKey,servingUrl);
+        ofy().save().entity(store);
+
+
+    }
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         try{
-            List<BlobKey> blobs = BlobstoreService.getUploads(req).get("file");
+            List<BlobKey> blobs = blobstoreService.getUploads(req).get("file");
             BlobKey blobKey = blobs.get(0);
 
             ImagesService imageService = ImagesServiceFactory.getImagesService();
@@ -36,7 +52,7 @@ public class Uploaded extends HttpServlet {
 
             JSONObject json = new JSONObject();
             json.put("servingUrl", servingUrl);
-            json.put("blobKey", blobKey.getKeySting());
+            json.put("blobKey", blobKey.getKeyString());
 
             PrintWriter out = resp.getWriter();
             out.print(json.toString());

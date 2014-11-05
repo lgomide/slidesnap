@@ -1,4 +1,4 @@
-package edu.utexas.ee461l.slidesnap;
+package edu.utexas.ee461l.slidesnap.servlets;
 
 /**
  * Created by Thomas on 10/30/2014.

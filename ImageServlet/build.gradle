@@ -22,12 +22,8 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.8'
-    compile 'javax.servlet:servlet-api:2.5'
-    compile 'com.google.appengine:appengine-endpoints:1.9.1'
-    compile 'com.google.appengine:appengine-endpoints-deps:1.9.1'
-    compile 'org.json:json:20140107'
-    compile 'com.googlecode.objectify:objectify:5.1.1'
+  appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.8'
+  compile 'javax.servlet:servlet-api:2.5'
 }
 
 appengine {
