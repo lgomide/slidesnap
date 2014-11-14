@@ -7,6 +7,7 @@ import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentResolver;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -113,6 +114,7 @@ public class LoginActivity extends PlusBaseActivity implements LoaderCallbacks<C
         mProgressView = findViewById(R.id.login_progress);
         mEmailLoginFormView = findViewById(R.id.email_login_form);
         mSignOutButtons = findViewById(R.id.plus_sign_out_buttons);
+
     }
 
     private void populateAutoComplete() {
@@ -170,6 +172,7 @@ public class LoginActivity extends PlusBaseActivity implements LoaderCallbacks<C
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
         }
     }
     private boolean isEmailValid(String email) {
@@ -250,6 +253,8 @@ public class LoginActivity extends PlusBaseActivity implements LoaderCallbacks<C
         mSignOutButtons.setVisibility(connected ? View.VISIBLE : View.GONE);
         mPlusSignInButton.setVisibility(connected ? View.GONE : View.VISIBLE);
         mEmailLoginFormView.setVisibility(connected ? View.GONE : View.VISIBLE);
+
+
     }
 
     @Override
@@ -301,6 +306,7 @@ public class LoginActivity extends PlusBaseActivity implements LoaderCallbacks<C
         }
 
         addEmailsToAutoComplete(emails);
+
     }
 
     @Override
