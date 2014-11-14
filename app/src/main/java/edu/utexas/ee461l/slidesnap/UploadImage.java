@@ -7,8 +7,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
+//import org.apache.http.entity.mime.MultipartEntity;
+//import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,10 +44,10 @@ public class UploadImage extends AsyncTask<String, String, String>{
             }
             HttpPost httppost = new HttpPost(url);
             File f = new File(filePath);
-            FileBody filebody = new FileBody(f);
-            MultipartEntity reqEntity = new MultipartEntity();
-            reqEntity.addPart("file", filebody);
-            httppost.setEntity(reqEntity);
+            //FileBody filebody = new FileBody(f);
+            //MultipartEntity reqEntity = new MultipartEntity();
+            //reqEntity.addPart("file", filebody);
+            //httppost.setEntity(reqEntity);
             response = httpClient.execute(httppost);
             urlEntity = response.getEntity();
             in = urlEntity.getContent();

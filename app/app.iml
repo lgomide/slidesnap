@@ -85,6 +85,7 @@
     <orderEntry type="library" exported="" name="guava-17.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-6.1.11" level="project" />
+    <orderEntry type="library" exported="" name="rt" level="project" />
     <orderEntry type="library" exported="" name="objectify-5.1.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
