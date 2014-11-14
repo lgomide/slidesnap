@@ -47,10 +47,14 @@
 
         <activity
             android:name="edu.utexas.ee461l.slidesnap.RightActivity"
-            android:label="@string/title_activity_right"></activity>
+            android:label="@string/title_activity_right">
+
+            </activity>
         <activity
             android:name="edu.utexas.ee461l.slidesnap.LeftActivity"
-            android:label="@string/title_activity_left"></activity>
+            android:label="@string/title_activity_left">
+            
+            </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
