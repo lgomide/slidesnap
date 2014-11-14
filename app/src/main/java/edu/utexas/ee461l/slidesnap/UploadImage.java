@@ -13,8 +13,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

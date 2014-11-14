@@ -36,12 +36,13 @@ public class MainActivity extends Activity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // Image captured and saved to fileUri specified in the Intent
-
+                startActivity(new Intent(MainActivity.this, LeftActivity.class));
                 System.out.println("file path " + fileUri);
                 //Log.d("MyCameraApp", "Image saved to:\n" + data.getData());
                 //Toast.makeText(this, "Image saved to:\n" +
                 //data.getData(), Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
+                startActivity(new Intent(MainActivity.this, RightActivity.class));
                 // User cancelled the image capture
             } else {
                 // Image capture failed, advise user
@@ -122,9 +123,7 @@ public class MainActivity extends Activity {
         return mediaFile;
     }
 
-    public void signOut(View v) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-    }
+
 
 }
 
