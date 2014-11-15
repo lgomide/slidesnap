@@ -22,13 +22,19 @@ import java.io.InputStream;
 /**
  * Created by Thomas on 10/30/2014.
  */
-public class UploadImage extends AsyncTask<String, String, String>{
+public class UploadImage extends AsyncTask<Void, Void, Void>{
 
+    String filePath;
+    String to;
+    String from;
+
+    public UploadImage(String filePath, String to, String from){
+        this.filePath = filePath;
+        this.to = to;
+        this.from = from;
+    }
     @Override
-    protected String doInBackground(String... strings) {
-        String from = strings[0];
-        String to = strings[1];
-        String filePath = strings[2];
+    protected Void doInBackground(Void... param) {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet("http://www.slidesnapserver.appspot.com/ImageUpload");
         try {

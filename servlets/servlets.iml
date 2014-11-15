@@ -10,9 +10,9 @@
       <configuration>
         <option name="HTTP_ADDRESS" value="localhost" />
         <option name="HTTP_PORT" value="8080" />
-        <option name="WAR_DIR" value="C:\Users\Thomas\Android studioProjects\slidesnap\servlets\build\exploded-app" />
-        <option name="WEB_APP_DIR" value="C:\Users\Thomas\Android studioProjects\slidesnap\servlets\src\main\webapp" />
-        <option name="APPENGINE_SDKROOT" value="C:\Users\Thomas\.gradle\appengine-sdk\appengine-java-sdk-1.9.8" />
+        <option name="WAR_DIR" value="C:\Users\Kyle\Desktop\SLIDESNAP\slidesnap\servlets\build\exploded-app" />
+        <option name="WEB_APP_DIR" value="C:\Users\Kyle\Desktop\SLIDESNAP\slidesnap\servlets\src\main\webapp" />
+        <option name="APPENGINE_SDKROOT" value="C:\Users\Kyle\.gradle\appengine-sdk\appengine-java-sdk-1.9.8" />
       </configuration>
     </facet>
     <facet type="java-gradle" name="Java-Gradle">
