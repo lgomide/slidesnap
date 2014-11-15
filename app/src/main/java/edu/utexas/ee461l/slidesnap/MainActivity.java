@@ -122,5 +122,10 @@ public class MainActivity extends Activity {
         }
         return mediaFile;
     }
+
+    public void signOut(View v) {
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
+
 }
 
