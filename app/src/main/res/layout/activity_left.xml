@@ -7,7 +7,7 @@
     tools:context="edu.utexas.ee461l.slidesnap.LeftActivity"
     android:id="@+id/leftActivity">
 
-    <TextView android:text="Left Activity" android:layout_width="wrap_content"
+    <TextView android:text="Image Was Taken" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/left_activity" />
 
