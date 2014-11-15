@@ -6,14 +6,11 @@ import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 
 
 public class LoginActivity extends Activity
@@ -118,27 +115,7 @@ public class LoginActivity extends Activity
         }
     }
 
- /*   public void signIn(View view) {
-        if (view.getId() == R.id.sign_in_button
-                && !mGoogleApiClient.isConnecting()) {
-            mSignInClicked = true;
-            resolveSignInError();
-        }
-    }
 
-
-    public void signOut(View view) {
-        if (view.getId() == R.id.sign_out_button) {
-            if (mGoogleApiClient.isConnected()) {
-                Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
-                mGoogleApiClient.disconnect();
-                mGoogleApiClient.connect();
-                Toast.makeText(this, "User is disconnected!", Toast.LENGTH_LONG).show();
-            }
-        }
-
-    }
-*/
 
 
 

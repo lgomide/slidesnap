@@ -53,7 +53,7 @@
         <activity
             android:name="edu.utexas.ee461l.slidesnap.LeftActivity"
             android:label="@string/title_activity_left">
-            
+
             </activity>
 
         <meta-data
