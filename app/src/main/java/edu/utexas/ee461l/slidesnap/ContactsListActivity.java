@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class ContactsListActivity extends Activity {
@@ -15,14 +16,14 @@ public class ContactsListActivity extends Activity {
         setContentView(R.layout.activity_contacts_list);
     }
 
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.contacts_list, menu);
+        getMenuInflater().inflate(R.menu., menu);
         return true;
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -35,7 +36,7 @@ public class ContactsListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void SendPictureToServer(){
+    public void SendPictureToServer(View view){
         //call server method
         Bundle extras = getIntent().getExtras();
         String fileUri = extras.getString("pathUri");

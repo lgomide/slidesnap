@@ -6,7 +6,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ContactsListActivity">
+    tools:context="edu.utexas.ee461l.slidesnap.ContactsListActivity"
+    android:id="@+id/activityContactsList">
 
     <TextView
         android:text="@string/hello_world"
