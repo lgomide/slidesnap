@@ -39,7 +39,7 @@ public class ContactsListActivity extends Activity {
         //call server method
         Bundle extras = getIntent().getExtras();
         String fileUri = extras.getString("pathUri");
-        System.out.println(fileUri);
+        System.out.println(fileUri); //
         UploadImage uploadTask = new UploadImage(fileUri, "leo.1993gomide@gmail.com", "saijelmokashi@gmail.com");
     }
 }
