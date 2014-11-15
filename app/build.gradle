@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "edu.utexas.ee461l.slidesnap"
@@ -20,10 +20,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.android.gms:play-services:6.1.11'
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile 'com.googlecode.objectify:objectify:5.1.1'
-    compile files('/Users/Jeanne/SlideSnap/slidesnap/libs/httpmime-4.3.jar')
-    compile files('C:/Users/Thomas/Android studioProjects/slidesnap/libs/rt.jar')
+    compile files('libs/httpmime-4.3.jar')
 }
