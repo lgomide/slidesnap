@@ -9,6 +9,7 @@ import com.google.appengine.api.images.ImagesService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.channels.OverlappingFileLockException;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
 
 /**
  * Created by Thomas on 10/30/2014.
@@ -32,7 +32,7 @@ public class Uploaded extends HttpServlet {
         String blobKey = req.getParameter("blobKey");
         String servingUrl = req.getParameter("servingUrl");
         ImageGAE store = new ImageGAE(from,to,blobKey,servingUrl);
-        ofy().save().entity(store);
+        OfyService.ofy().save().entity(store);
 
 
     }
