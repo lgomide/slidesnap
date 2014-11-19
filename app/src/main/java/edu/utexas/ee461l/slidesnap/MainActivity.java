@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
             } else {
                 // Image capture failed, advise user
                 // Toast.makeText(this, "Image capture failed", Toast.LENGTH_LONG).show();
-
+//
 
             }
         }
