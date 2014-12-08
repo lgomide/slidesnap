@@ -12,7 +12,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/cameraButton"
         android:onClick="safeCameraOpenInView"
         android:src="@android:drawable/ic_menu_camera"
         android:layout_alignParentTop="true"
@@ -21,7 +21,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:id="@+id/trophyButton"
         android:onClick="safeCameraOpenInView"
         android:src="@android:drawable/ic_menu_info_details"
         android:layout_alignParentTop="true"
@@ -30,11 +30,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SlideSnap"
+        android:text="Slidesnap"
         android:textSize="35sp"
         android:textStyle="italic|bold"
         android:id="@+id/textView2"
-        android:layout_alignBottom="@+id/imageButton"
+        android:layout_alignBottom="@+id/cameraButton"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffffff" />
 

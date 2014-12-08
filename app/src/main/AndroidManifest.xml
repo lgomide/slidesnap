@@ -61,10 +61,13 @@
             android:name="edu.utexas.ee461l.slidesnap.LeftActivity"
             android:label="@string/title_activity_left" >
         </activity>
-
         <activity
             android:name="edu.utexas.ee461l.slidesnap.ContactsListActivity"
             android:label="ContactsListActivity" >
+        </activity>
+        <activity
+            android:name="edu.utexas.ee461l.slidesnap.NotificationsActivity"
+            android:label="@string/title_activity_notifications" >
         </activity>
     </application>
 
