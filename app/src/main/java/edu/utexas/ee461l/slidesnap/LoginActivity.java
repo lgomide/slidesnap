@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
+import com.parse.Parse;
 
 
 public class LoginActivity extends Activity
@@ -26,6 +27,7 @@ public class LoginActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Parse.initialize(this, "U126GWgnHbXeMFba1NEtFfrJ1NcC1koXE694jCPY", "Po6h6V5LOGDrCm6YsHXVTwHLUEVZep04Lyh4uqjK");
         mGoogleApiClient = new GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(Plus.API).addScope(Plus.SCOPE_PLUS_LOGIN).build();
         setContentView(R.layout.activity_login);
     }
