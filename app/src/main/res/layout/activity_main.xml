@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/trophyButton"
         android:onClick="safeCameraOpenInView"
-        android:src="@android:drawable/ic_menu_info_details"
+        android:src="@android:drawable/ic_menu_myplaces"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 

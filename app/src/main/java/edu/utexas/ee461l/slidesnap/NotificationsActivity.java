@@ -1,17 +1,23 @@
 package edu.utexas.ee461l.slidesnap;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class NotificationsActivity extends Activity {
+public class NotificationsActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+                "Linux", "OS/2" };
+        NotificationsAdapter adapter = new NotificationsAdapter(this, values);
+        setListAdapter(adapter);
     }
 
 
