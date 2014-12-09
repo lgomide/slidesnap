@@ -30,12 +30,13 @@ public class UploadImage extends AsyncTask<Void, Void, Void>{
     @Override
     protected Void doInBackground(Void... param) {
         ParseObject imageData = new ParseObject("imageData");
+        imageData.put("status","unopened");
         imageData.put("to",to);
         imageData.put("from", from);Bitmap bmp = BitmapFactory.decodeFile(filePath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG,100,baos);
         byte[] imageBytes = baos.toByteArray();
-        ParseFile imageFile = new ParseFile("image.jpg", imageBytes);
+        ParseFile imageFile = new ParseFile( filePath.substring(filePath.lastIndexOf("/")+1), imageBytes);
         imageFile.saveInBackground();
         imageData.put("image", imageFile);
         imageData.saveInBackground();
