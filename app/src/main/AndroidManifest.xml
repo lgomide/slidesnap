@@ -69,6 +69,10 @@
             android:name="edu.utexas.ee461l.slidesnap.NotificationsActivity"
             android:label="@string/title_activity_notifications" >
         </activity>
+        <activity
+            android:name="edu.utexas.ee461l.slidesnap.TrophyActivity"
+            android:label="@string/title_activity_trophy" >
+        </activity>
     </application>
 
 </manifest>

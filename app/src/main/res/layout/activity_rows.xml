@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@+id/label"
-        android:textSize="100px"
+        android:textSize="70px"
         android:textAppearance="@android:color/black"
         android:layout_alignTop="@id/imageView"
         android:layout_toRightOf="@id/imageView"

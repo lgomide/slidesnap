@@ -2,6 +2,7 @@ package edu.utexas.ee461l.slidesnap;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -40,6 +41,18 @@ public class NotificationsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
+        View contentView = (View)findViewById(R.id.NotificationsActivity);
+        contentView.setOnTouchListener(new OnSwipeTouchListener(this) {
+
+            @Override
+            public void onSwipeLeft() {
+                // Whatever
+                Toast.makeText(getApplicationContext(), "Go to Left Activity", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(NotificationsActivity.this, MainActivity.class));
+            }
+
+        });
+
         // Defined Array values to show in ListView
        ArrayList<String> values = new ArrayList<String>();
         values.add("Sent and Unopened");
@@ -61,6 +74,9 @@ public class NotificationsActivity extends Activity {
 
     }
 
+    public void backToMainPage(View view){
+        startActivity(new Intent(NotificationsActivity.this, MainActivity.class));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
