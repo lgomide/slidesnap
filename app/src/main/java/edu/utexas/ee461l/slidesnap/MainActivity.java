@@ -28,7 +28,18 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        View view = (View) findViewById(R.id.MainActivity);
 
+        view.setOnTouchListener(new OnSwipeTouchListener(this){
+           @Override
+        public void onSwipeLeft(){
+            startActivity(new Intent(MainActivity.this, RightActivity.class));
+            }
+            @Override
+        public void onSwipeRight(){
+            startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -47,8 +58,6 @@ public class MainActivity extends Activity {
             } else {
                 // Image capture failed, advise user
                 // Toast.makeText(this, "Image capture failed", Toast.LENGTH_LONG).show();
-//
-
             }
         }
     }
@@ -66,7 +75,6 @@ public class MainActivity extends Activity {
         }
 
     }
-
     /**
      * Create a file Uri for saving an image or video
      */
