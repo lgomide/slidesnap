@@ -60,7 +60,7 @@ public class NotificationsAdapter extends ArrayAdapter<String> {
             imageView.setImageResource(R.drawable.receiver_x);
         }
         if (s.equals("Received Working")) {
-            imageView.setImageResource(R.drawable.receiver_working);
+            imageView.setImageResource(R.drawable.countdown);
         }
         return rowView;
     }

@@ -9,5 +9,6 @@
     <string name="title_activity_notifications">NotificationsActivity</string>
     <string name="title_activity_initial">InitialActivity</string>
     <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="title_activity_trophy">TrophyActivity</string>
 
 </resources>

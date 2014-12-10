@@ -29,11 +29,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         View view = (View) findViewById(R.id.MainActivity);
-
         view.setOnTouchListener(new OnSwipeTouchListener(this){
            @Override
         public void onSwipeLeft(){
-            startActivity(new Intent(MainActivity.this, RightActivity.class));
+            startActivity(new Intent(MainActivity.this, TrophyActivity.class));
             }
             @Override
         public void onSwipeRight(){
@@ -61,6 +60,19 @@ public class MainActivity extends Activity {
             }
         }
     }
+
+    public void sendToNotifications(View view){
+        startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+    }
+
+    public void sendToContacts(View view){
+        startActivity(new Intent(MainActivity.this, RightActivity.class));
+    }
+
+    public void sentToTrophies(View view){
+        startActivity(new Intent(MainActivity.this, TrophyActivity.class));
+    }
+
 
     public void safeCameraOpenInView(View v) {
         // create Intent to take a picture and return control to the calling application
@@ -129,10 +141,6 @@ public class MainActivity extends Activity {
             return null;
         }
         return mediaFile;
-    }
-
-    public void signOut(View v) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
 }

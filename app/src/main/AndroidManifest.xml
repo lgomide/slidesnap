@@ -71,6 +71,10 @@
             android:name="edu.utexas.ee461l.slidesnap.CreateAccountActivity"
             android:label="@string/title_activity_create_account" >
         </activity>
+        <activity
+            android:name="edu.utexas.ee461l.slidesnap.TrophyActivity"
+            android:label="@string/title_activity_trophy" >
+        </activity>
     </application>
 
 </manifest>
