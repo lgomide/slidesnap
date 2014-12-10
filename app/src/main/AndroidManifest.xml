@@ -30,23 +30,21 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="edu.utexas.ee461l.slidesnap.LoginActivity"
-            android:label="@string/app_name"
+            android:name="edu.utexas.ee461l.slidesnap.InitialActivity"
+            android:label="@string/title_activity_initial"
             android:windowSoftInputMode="adjustResize|stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name="edu.utexas.ee461l.slidesnap.LoginActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
             android:name="edu.utexas.ee461l.slidesnap.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -68,6 +66,10 @@
         <activity
             android:name="edu.utexas.ee461l.slidesnap.NotificationsActivity"
             android:label="@string/title_activity_notifications" >
+        </activity>
+        <activity
+            android:name="edu.utexas.ee461l.slidesnap.CreateAccountActivity"
+            android:label="@string/title_activity_create_account" >
         </activity>
     </application>
 

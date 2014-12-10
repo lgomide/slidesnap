@@ -21,7 +21,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/userName"
+            android:id="@+id/userName2"
             android:hint="Username"
             android:layout_gravity="center_horizontal"/>
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/password"
+            android:id="@+id/password2"
             android:hint="Password"
             android:layout_gravity="center_horizontal"/>
 
@@ -45,16 +45,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
-                android:id="@+id/button4"
-                android:onClick="cancelButtonPress"
+                android:id="@+id/button5"
+                android:onClick="cancelButtonPress2"
                 android:layout_gravity="center_vertical"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log In"
-                android:id="@+id/button3"
-                android:onClick="logInUser"
+                android:text="Create Account"
+                android:id="@+id/button4"
+                android:onClick="createAccount"
                 android:layout_gravity="center_vertical"/>
 
 
