@@ -59,8 +59,6 @@ public class NotificationsAdapter extends ArrayAdapter<PuzzleEntry> {
                     i.putExtra("objectID", values.get(w.position).getObjectId());
                     i.putExtra("pathUri", values.get(w.position).getPath());
                     v.getContext().startActivity(i);
-                    //code to open the puzzle
-                    //need to pass ObjectID, URI
                 }
             });
             row.setTag(holder);
@@ -68,7 +66,6 @@ public class NotificationsAdapter extends ArrayAdapter<PuzzleEntry> {
         } else {
             holder = (PuzzleEntryHolder) row.getTag();
         }
-// status of the puzzle. UnopenedSend, UnopenedReceive, ReceiveWrong, ReceiveRight, SendWrong, SendRight
         holder.button.setTag(holder);
         String friendName = values.get(position).getUser();
         holder.user.setText(friendName);
@@ -107,38 +104,4 @@ public class NotificationsAdapter extends ArrayAdapter<PuzzleEntry> {
         ImageButton button;
         int position;
     }
-
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        LayoutInflater inflater = (LayoutInflater) context
-//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View rowView = inflater.inflate(R.layout.activity_rows, parent, false);
-//        TextView textView = (TextView) rowView.findViewById(R.id.textView);
-//        ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
-//        textView.setText(values.get(position));
-//        // Change the icon for Windows and iPhone
-//        String s = values.get(position);
-//        if (s.equals("Sent and Unopened")) {
-//            imageView.setImageResource(R.drawable.sender_arrow);
-//        }
-//        if (s.equals("Sent and Solved")) {
-//            imageView.setImageResource(R.drawable.sender_check);
-//        }
-//        if (s.equals("Sent and Unsolved")) {
-//            imageView.setImageResource(R.drawable.sender_x);
-//        }
-//        if (s.equals("Received and Unopened")) {
-//            imageView.setImageResource(R.drawable.receiver_arrow);
-//        }
-//        if (s.equals("Received and Solved")) {
-//            imageView.setImageResource(R.drawable.receiver_check);
-//        }
-//        if (s.equals("Received and Unsolved")) {
-//            imageView.setImageResource(R.drawable.receiver_x);
-//        }
-//        if (s.equals("Received Working")) {
-//            imageView.setImageResource(R.drawable.countdown);
-//        }
-//        return rowView;
-//    }
 }

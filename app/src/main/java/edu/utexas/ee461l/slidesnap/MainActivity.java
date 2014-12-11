@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
             }
             @Override
         public void onSwipeRight(){
+            Intent i = new Intent(MainActivity.this, NotificationsActivity.class);
             startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
             }
         });

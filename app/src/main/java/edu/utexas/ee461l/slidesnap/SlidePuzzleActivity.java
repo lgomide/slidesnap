@@ -87,7 +87,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
             dialog.show(ft, "dialog");
 
         }else{
-            Intent intent = new Intent(this, TestActivity.class);
+            Intent intent = new Intent(this, NotificationsActivity.class);
             startActivity(intent);
         }
     }
@@ -251,7 +251,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
             if(activityOver){
                   // Do nothing
             }else{
-                Intent intent = new Intent(this, TestActivity.class);
+                Intent intent = new Intent(this, NotificationsActivity.class);
                 startActivity(intent);
                 activityOver = true;
             }

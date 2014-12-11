@@ -37,6 +37,7 @@ import java.util.List;
 public class NotificationsActivity extends Activity {
     ListView listView ;
     ParseUser currentUser;
+    NotificationsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class NotificationsActivity extends Activity {
         ArrayList<PuzzleEntry> entries = getAllEntries();
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
-        NotificationsAdapter adapter = new NotificationsAdapter(this, R.layout.activity_notifications_row,entries);
+        adapter = new NotificationsAdapter(this, R.layout.activity_notifications_row,entries);
         listView.setAdapter(adapter);
     }
 
@@ -69,6 +70,13 @@ public class NotificationsActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_notifications, menu);
         return true;
     }
+
+    @Override
+    public void onRestart(){
+        adapter.clear();
+        adapter.addAll(getAllEntries());
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
