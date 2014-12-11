@@ -20,7 +20,8 @@ public class TrophyActivity extends Activity {
         setContentView(R.layout.activity_trophy);
         TextView numOfTrophies = (TextView) findViewById(R.id.numOfTrophies);
         ParseUser user = ParseUser.getCurrentUser();
-        numOfTrophies.setText(user.getInt("trophies")); // Check to make sure this works
+        String trophies = Integer.toString( user.getInt("trophies"));
+        numOfTrophies.setText(trophies); // Check to make sure this works
 
         View contentView = (View)findViewById(R.id.TrophyActivity);
         contentView.setOnTouchListener(new OnSwipeTouchListener(this) {
