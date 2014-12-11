@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+
 
 public class TrophyActivity extends Activity {
 
@@ -17,7 +19,8 @@ public class TrophyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy);
         TextView numOfTrophies = (TextView) findViewById(R.id.numOfTrophies);
-        numOfTrophies.setText("78");
+        ParseUser user = ParseUser.getCurrentUser();
+        numOfTrophies.setText(user.getInt("trophies")); // Check to make sure this works
 
         View contentView = (View)findViewById(R.id.TrophyActivity);
         contentView.setOnTouchListener(new OnSwipeTouchListener(this) {

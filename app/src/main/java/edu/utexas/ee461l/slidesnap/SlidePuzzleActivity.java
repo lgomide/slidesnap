@@ -25,6 +25,13 @@ import android.widget.ImageView;
 
 //import com.example.thomas.edu.utexas.ee461l.slidesnap.slidepuzzle.R;
 
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.io.File;
 
 public class SlidePuzzleActivity extends Activity implements OnKeyListener {
@@ -50,6 +57,10 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     private TileView mTileView;
     private Chronometer mTimerView;
     private long mTime;
+
+    public ParseUser user;
+    public ParseQuery<ParseObject> query;
+
 
 
     private AnimationListener mCompleteAnimListener = new AnimationListener() {
@@ -97,6 +108,8 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         mTimerView.setTextColor(getResources().getColor(R.drawable.default_fg_color));
+
+        user = ParseUser.getCurrentUser();
 
         Bundle extras = getIntent().getExtras();
         String pathUri = extras.getString("pathUri");
@@ -219,6 +232,23 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
         if((SystemClock.elapsedRealtime() - mTimerView.getBase()) >= GAME_OVER_TIME){
             mTimerView.stop();
             gameOver = true;
+
+            //TODO Parse Stuff (Lost Game)
+            final ParseObject imageData = new ParseObject("imageData");
+            query = ParseQuery.getQuery("imageData");
+            query.getInBackground(ObjectID, new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject parseObject, ParseException e) {
+                    try{
+                        imageData.put("status", "wrong");
+                        imageData.remove("pathUri"); // May need to change
+                        imageData.save();
+                    }catch (ParseException ex){
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
             finish();
             if(activityOver){
                   // Do nothing
@@ -258,11 +288,27 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                     mCompleteView.startAnimation(animation);
                     mTimerView.stop();
                     PUZZLE_SOLVED = true;
+                    user.increment("trophies");
+
+                    // TODO Parse Stuff (Solved)
+                    final ParseObject imageData = new ParseObject("imageData");
+                    query = ParseQuery.getQuery("imageData");
+                    query.getInBackground(ObjectID, new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject parseObject, ParseException e) {
+                          try{
+                              imageData.put("status", "correct");
+                              imageData.remove("pathUri"); // May need to change
+                              imageData.save();
+                          }catch (ParseException ex){
+                              ex.printStackTrace();
+                          }
+                        }
+                    });
                 }
                 return true;
             }
         }
-
         return false;
     }
 
