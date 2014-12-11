@@ -2,6 +2,7 @@ package edu.utexas.ee461l.slidesnap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.google.common.base.Strings;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,6 +55,10 @@ public class NotificationsAdapter extends ArrayAdapter<PuzzleEntry> {
                 @Override
                 public void onClick(View v) {
                     PuzzleEntryHolder w = (PuzzleEntryHolder) v.getTag();
+                    Intent i = new Intent(v.getContext(),SlidePuzzleActivity.class);
+                    i.putExtra("objectID", values.get(w.position).getObjectId());
+                    i.putExtra("pathUri", values.get(w.position).getPath());
+                    v.getContext().startActivity(i);
                     //code to open the puzzle
                     //need to pass ObjectID, URI
                 }

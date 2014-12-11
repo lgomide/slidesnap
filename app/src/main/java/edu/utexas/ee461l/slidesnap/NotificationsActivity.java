@@ -133,7 +133,7 @@ public class NotificationsActivity extends Activity {
                     }else if(status.equals("wrong")){
                         status = "ReceiveWrong";
                     }
-                    allEntries.add(new PuzzleEntry(status,mediaFile.toURI(),(String) entry.get("from"),entry.getObjectId()));
+                    allEntries.add(new PuzzleEntry(status,mediaFile.getPath(),(String) entry.get("from"),entry.getObjectId()));
                 }else if((sentResults.get(0).getCreatedAt().after(receivedResults.get(0).getCreatedAt()))) {
                         //do sent
                         ParseObject entry = sentResults.remove(0);
@@ -170,7 +170,7 @@ public class NotificationsActivity extends Activity {
                         }else if(status.equals("wrong")){
                             status = "ReceiveWrong";
                         }
-                        allEntries.add(new PuzzleEntry(status,mediaFile.toURI(),(String) entry.get("from"),entry.getObjectId()));
+                        allEntries.add(new PuzzleEntry(status,mediaFile.getPath(),(String) entry.get("from"),entry.getObjectId()));
                     }
                 }
         } catch (com.parse.ParseException e){

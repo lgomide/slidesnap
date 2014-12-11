@@ -7,11 +7,11 @@ import java.net.URI;
  */
 public class PuzzleEntry {
     private String status; // status of the puzzle. UnopenedSend, UnopenedReceive, ReceiveWrong, ReceiveRight, SendWrong, SendRight
-    private URI path;
+    private String path;
     private String user;
     private String objectId;
 
-    public PuzzleEntry(String opened, URI path, String user, String objectId){
+    public PuzzleEntry(String opened, String path, String user, String objectId){
         this.status = opened;
         this.path = path;
         this.user = user;
@@ -22,7 +22,7 @@ public class PuzzleEntry {
         return status;
     }
 
-    public URI getPath(){
+    public String getPath(){
         return path;
     }
 

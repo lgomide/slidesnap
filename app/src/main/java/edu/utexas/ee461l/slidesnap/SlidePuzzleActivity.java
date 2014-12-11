@@ -58,6 +58,8 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     private Chronometer mTimerView;
     private long mTime;
 
+    private String objectID;
+
     public ParseUser user;
     public ParseQuery<ParseObject> query;
 
@@ -113,6 +115,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
         Bundle extras = getIntent().getExtras();
         String pathUri = extras.getString("pathUri");
+        objectID = extras.getString("objectID");
 
         setCustomLocation(pathUri);
 
@@ -234,20 +237,15 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
             gameOver = true;
 
             //TODO Parse Stuff (Lost Game)
-            final ParseObject imageData = new ParseObject("imageData");
             query = ParseQuery.getQuery("imageData");
-            query.getInBackground(ObjectID, new GetCallback<ParseObject>() {
-                @Override
-                public void done(ParseObject parseObject, ParseException e) {
                     try{
+                        ParseObject imageData = query.get(objectID);
                         imageData.put("status", "wrong");
                         imageData.remove("pathUri"); // May need to change
                         imageData.save();
                     }catch (ParseException ex){
                         ex.printStackTrace();
                     }
-                }
-            });
 
             finish();
             if(activityOver){
@@ -291,12 +289,9 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                     user.increment("trophies");
 
                     // TODO Parse Stuff (Solved)
-                    final ParseObject imageData = new ParseObject("imageData");
                     query = ParseQuery.getQuery("imageData");
-                    query.getInBackground(ObjectID, new GetCallback<ParseObject>() {
-                        @Override
-                        public void done(ParseObject parseObject, ParseException e) {
                           try{
+                              ParseObject imageData = query.get(objectID);
                               imageData.put("status", "correct");
                               imageData.remove("pathUri"); // May need to change
                               imageData.save();
@@ -304,11 +299,10 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                               ex.printStackTrace();
                           }
                         }
-                    });
+
                 }
                 return true;
             }
-        }
         return false;
     }
 
