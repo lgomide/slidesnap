@@ -17,6 +17,7 @@ public class SaveImageDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
                         getActivity().finish();
+                        //startActivity(getActivity().getIntent());
 
                     }
                 })

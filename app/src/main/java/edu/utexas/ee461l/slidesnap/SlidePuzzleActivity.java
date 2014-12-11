@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -24,10 +23,6 @@ import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-//import com.example.thomas.edu.utexas.ee461l.slidesnap.slidepuzzle.R;
-
-import com.parse.GetCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -100,6 +95,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.slide_puzzle);
@@ -335,6 +331,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
     @Override
     protected void onDestroy(){
+        super.onDestroy();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("imageData");
         try{
             ParseObject data = query.get(objectID);
@@ -358,4 +355,6 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
+
+
 }
