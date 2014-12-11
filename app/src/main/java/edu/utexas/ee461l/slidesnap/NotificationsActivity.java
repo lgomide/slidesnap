@@ -20,6 +20,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.google.common.base.Strings;
+import com.parse.ParseUser;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,10 +36,12 @@ import java.util.List;
 
 public class NotificationsActivity extends Activity {
     ListView listView ;
+    ParseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentUser = ParseUser.getCurrentUser();
         setContentView(R.layout.activity_notifications);
         View contentView = (View)findViewById(R.id.NotificationsActivity);
         contentView.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -49,29 +52,11 @@ public class NotificationsActivity extends Activity {
             }
 
         });
-
-        // Defined Array values to show in ListView
-       ArrayList<String> values = new ArrayList<String>();
-        values.add("Sent and Unopened");
-        values.add("Sent and Solved");
-        values.add("Sent and Unsolved");
-        values.add("Received and Unopened");
-        values.add( "Received and Unsolved");
-        values.add("Received Working");
-        values.add("Sent and Unopened");
-        values.add("Sent and Solved");
-        values.add("Sent and Unopened");
-        values.add("Received and Solved");
-        values.add("Received and Unsolved");
-        values.add("Sent and Unopened");
-        values.add("Received and Solved");
-        values.add("Received and Unsolved");
-
+        ArrayList<PuzzleEntry> entries = getAllEntries();
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
-        NotificationsAdapter adapter = new NotificationsAdapter(this, values);
+        NotificationsAdapter adapter = new NotificationsAdapter(this, R.layout.activity_notifications_row,entries);
         listView.setAdapter(adapter);
-
     }
 
     public void backToMainPage(View view){
@@ -103,10 +88,10 @@ public class NotificationsActivity extends Activity {
     public ArrayList<PuzzleEntry> getAllEntries(){
         ArrayList<PuzzleEntry> allEntries = new ArrayList<PuzzleEntry>();
         ParseQuery<ParseObject> sentQuery = ParseQuery.getQuery("imageData");
-        sentQuery.whereEqualTo("from", "leo.1993gomide@gmail.com");
+        sentQuery.whereEqualTo("from", currentUser.getUsername());
         sentQuery.addDescendingOrder("createdAt");
         ParseQuery<ParseObject> receivedQuery = ParseQuery.getQuery("imageData");
-        receivedQuery.whereEqualTo("to", "leo.1993gomide@gmail.com");
+        receivedQuery.whereEqualTo("to", currentUser.getUsername());
         receivedQuery.addDescendingOrder("createdAt");
         try{
             List<ParseObject> sentResults = sentQuery.find();
@@ -128,8 +113,12 @@ public class NotificationsActivity extends Activity {
                     //do received
                     ParseObject entry = receivedResults.remove(0);
                     ParseFile image = (ParseFile) entry.get("image");
-                    File mediaFile = new File(Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_DCIM), ".SlideSnap" + File.separator + image.getName());
+                    File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
+                            Environment.DIRECTORY_DCIM), ".SlideSnap");
+                    if(!mediaFileDir.exists()){
+                        mediaFileDir.mkdirs();
+                    }
+                    File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
                     byte[] imageBytes = image.getData();
                     if(!mediaFile.exists()){
                         FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
@@ -161,8 +150,12 @@ public class NotificationsActivity extends Activity {
                         //do received
                         ParseObject entry = receivedResults.remove(0);
                         ParseFile image = (ParseFile) entry.get("image");
-                        File mediaFile = new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_DCIM), ".SlideSnap" + File.separator + image.getName());
+                        File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
+                                Environment.DIRECTORY_DCIM), ".SlideSnap");
+                        if(!mediaFileDir.exists()){
+                            mediaFileDir.mkdirs();
+                        }
+                        File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
                         byte[] imageBytes = image.getData();
                         if(!mediaFile.exists()){
                             FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
@@ -188,8 +181,4 @@ public class NotificationsActivity extends Activity {
         return allEntries;
     }
 
-    public void testFunction(View v){
-        getAllEntries();
-
-    }
 }
