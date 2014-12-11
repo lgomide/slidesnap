@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
+import com.parse.ParseUser;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +34,7 @@ public class MainActivity extends Activity {
         view.setOnTouchListener(new OnSwipeTouchListener(this){
            @Override
         public void onSwipeLeft(){
-            startActivity(new Intent(MainActivity.this, TrophyActivity.class));
+            startActivity(new Intent(MainActivity.this, ContactsListActivity.class));
             }
             @Override
         public void onSwipeRight(){
@@ -66,7 +68,7 @@ public class MainActivity extends Activity {
     }
 
     public void sendToContacts(View view){
-        startActivity(new Intent(MainActivity.this, RightActivity.class));
+        startActivity(new Intent(MainActivity.this, ContactsListActivity.class));
     }
 
     public void sentToTrophies(View view){
@@ -86,6 +88,14 @@ public class MainActivity extends Activity {
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
 
+    }
+
+    public void logOut(View v) {
+        //log the user out
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser.logOut();
+        startActivity(new Intent(MainActivity.this, InitialActivity.class));
     }
     /**
      * Create a file Uri for saving an image or video

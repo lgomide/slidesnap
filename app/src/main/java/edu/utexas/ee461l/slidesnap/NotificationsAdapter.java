@@ -28,7 +28,6 @@ public class NotificationsAdapter extends ArrayAdapter<String> {
             super(context, R.layout.activity_rows, R.id.textView, values);
             this.context = context;
             this.values = values;
-            //inflater = LayoutInflater.from(context);
         }
 
     @Override

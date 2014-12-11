@@ -1,19 +1,16 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.ContactsListActivity"
-    android:id="@+id/activityContactsList">
+    android:background="#699dd9"
+    tools:context=".ContactsListActivity"
+    android:orientation="vertical"
+    android:id="@+id/activityContactsList"
+    android:weightSum="1">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
 
     <Button
         android:layout_width="wrap_content"
@@ -34,14 +31,36 @@
         android:layout_alignParentStart="true"
         android:onClick="addFriendTest" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SeeFriends"
-        android:id="@+id/button2"
-        android:layout_toEndOf="@+id/button2"
-        android:layout_above="@+id/button2"
-        android:layout_alignEnd="@+id/button"
-        android:onClick="seeFriendsTest" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:src="@android:drawable/ic_menu_add"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="addContact"/>
 
-</RelativeLayout>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newContact"
+            android:layout_alignBottom="@+id/imageButton"
+            android:layout_alignParentStart="true"
+            android:hint="Add Friend"/>
+
+
+    </RelativeLayout>
+
+
+
+    <ListView
+        android:id="@+id/friendsList"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_alignParentStart="true">
+    </ListView>
+
+
+
+
+</LinearLayout>

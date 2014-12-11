@@ -45,8 +45,6 @@ public class NotificationsActivity extends Activity {
 
             @Override
             public void onSwipeLeft() {
-                // Whatever
-                Toast.makeText(getApplicationContext(), "Go to Left Activity", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(NotificationsActivity.this, MainActivity.class));
             }
 
@@ -62,6 +60,9 @@ public class NotificationsActivity extends Activity {
         values.add("Received Working");
         values.add("Sent and Unopened");
         values.add("Sent and Solved");
+        values.add("Sent and Unopened");
+        values.add("Received and Solved");
+        values.add("Received and Unsolved");
         values.add("Sent and Unopened");
         values.add("Received and Solved");
         values.add("Received and Unsolved");
