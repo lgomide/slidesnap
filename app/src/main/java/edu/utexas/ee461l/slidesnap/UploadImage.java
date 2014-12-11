@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
 
@@ -29,6 +30,8 @@ public class UploadImage extends AsyncTask<Void, Void, Void>{
     }
     @Override
     protected Void doInBackground(Void... param) {
+        ParseUser currentUser  = ParseUser.getCurrentUser();
+        currentUser.getUsername();
         ParseObject imageData = new ParseObject("imageData");
         imageData.put("status","unopened");
         imageData.put("to",to);

@@ -1,27 +1,40 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.SelectFriendsActivity">
-
+    android:background="#699dd9"
+    android:orientation="vertical"
+    tools:context=".SelectFriendsActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
     <TextView
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:text="Select Friends"
+        android:textSize="35sp"
+        android:textStyle="italic|bold"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/cameraButton"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go To Puzzle"
-        android:id="@+id/button"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="97dp"
-        android:onClick="SendToFriends"/>
+        android:id="@+id/imageButton2"
+        android:src="@android:drawable/ic_menu_send"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="SendPictureToServer"/>
+    </RelativeLayout>
 
-</RelativeLayout>
+    <ListView
+        android:id="@+id/friendsList"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_alignParentStart="true">
+    </ListView>
+
+
+</LinearLayout>
