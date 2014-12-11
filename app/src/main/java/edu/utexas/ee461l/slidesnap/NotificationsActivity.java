@@ -1,43 +1,31 @@
 package edu.utexas.ee461l.slidesnap;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-
-import com.parse.GetDataCallback;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.google.common.base.Strings;
 import com.parse.ParseUser;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class NotificationsActivity extends Activity {
     ListView listView ;
     ParseUser currentUser;
     NotificationsAdapter adapter;
+    ArrayList<PuzzleEntry> entries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +41,7 @@ public class NotificationsActivity extends Activity {
             }
 
         });
-        ArrayList<PuzzleEntry> entries = getAllEntries();
+        entries = getAllEntries();
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
         adapter = new NotificationsAdapter(this, R.layout.activity_notifications_row,entries);
@@ -187,6 +175,12 @@ public class NotificationsActivity extends Activity {
             e.printStackTrace();
         }
         return allEntries;
+    }
+
+    public void refreshNotifications(View v) {
+        entries = getAllEntries();
+        adapter.clear();
+        adapter.addAll(entries);
     }
 
 }
