@@ -2,11 +2,11 @@
 <web-app version="2.5">
     <servlet>
         <servlet-name>ImageUpload</servlet-name>
-        <servlet-class>edu.utexas.ee461l.slidesnap.servlets.ImageUpload</servlet-class>
+        <servlet-class>edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.servlets.ImageUpload</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Uploaded</servlet-name>
-        <servlet-class>edu.utexas.ee461l.slidesnap.servlets.Uploaded</servlet-class>
+        <servlet-class>edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.servlets.Uploaded</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ImageUpload</servlet-name>

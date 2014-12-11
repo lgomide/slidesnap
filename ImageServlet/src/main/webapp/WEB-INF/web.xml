@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
         <servlet-name>MyServlet</servlet-name>
-        <servlet-class>edu.utexas.ee461l.slidesnap.ImageServlet.MyServlet</servlet-class>
+        <servlet-class>edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.ImageServlet.MyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>

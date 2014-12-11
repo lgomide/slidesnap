@@ -18,7 +18,6 @@ public class InitialActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
         Parse.initialize(this, "U126GWgnHbXeMFba1NEtFfrJ1NcC1koXE694jCPY", "Po6h6V5LOGDrCm6YsHXVTwHLUEVZep04Lyh4uqjK");
-        ParseUser.logOut();
         ParseUser currentUser = ParseUser.getCurrentUser();
         if(currentUser != null){
             startActivity(new Intent(InitialActivity.this,MainActivity.class));

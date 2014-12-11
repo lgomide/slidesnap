@@ -45,16 +45,6 @@ public class ContactsListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void SendPictureToServer(View v){
-        //call server method
-        Bundle extras = getIntent().getExtras();
-        String fileUri = extras.getString("pathUri");
-        System.out.println(fileUri); //
-        UploadImage uploadTask = new UploadImage(fileUri, "saijelmokashi@gmail.com", "leo.1993gomide@gmail.com");
-        uploadTask.execute();
-        Toast.makeText(this,"Image and data have been stored",Toast.LENGTH_SHORT);
-    }
-
     public void addFriend(String friend){
         ParseQuery<ParseUser> checkFriend = ParseUser.getQuery();
         checkFriend.whereEqualTo("username", friend);

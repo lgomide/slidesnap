@@ -40,7 +40,6 @@ public class NotificationsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
-
         View contentView = (View)findViewById(R.id.NotificationsActivity);
         contentView.setOnTouchListener(new OnSwipeTouchListener(this) {
 

@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.utexas.ee461l.slidesnap.TrophyActivity"
+    tools:context="edu.utexas.ee461l.edu.utexas.ee461l.slidesnap.slidepuzzle.TrophyActivity"
     android:id="@+id/TrophyActivity"
     android:background="#ff3fd0ff">
 

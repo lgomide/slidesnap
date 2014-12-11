@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
             if (resultCode == RESULT_OK) {
                 // Image captured and saved to fileUri specified in the Intent
 
-                startActivity(new Intent(MainActivity.this, ContactsListActivity.class).putExtra("pathUri", fileUri.toString()));
+                startActivity(new Intent(MainActivity.this, SelectFriendsActivity.class).putExtra("pathUri", fileUri.toString()));
                 System.out.println("file path " + fileUri);
                 //Log.d("MyCameraApp", "Image saved to:\n" + data.getData());
                 //Toast.makeText(this, "Image saved to:\n" +

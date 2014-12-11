@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/default_bg_color">
+
+
+    <FrameLayout
+        android:id="@+id/ad_layout"
+        android:background="#ff3fd0ff"
+        android:gravity="center_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="52dip">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:id="@+id/imageButton"
+        android:onClick="toPreferences"
+        android:src="@android:drawable/ic_menu_revert"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
+        <Chronometer
+            android:id="@+id/timer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/clock_bg"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:saveEnabled="true"
+            android:padding="2dip"
+            android:gravity="center"/>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <edu.utexas.ee461l.slidesnap.TileView
+            android:id="@+id/tile_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#00000000"
+            android:focusableInTouchMode="true"/>
+        <ImageView
+            android:id="@+id/complete_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:background="#00000000"/>
+
+    </FrameLayout>
+</LinearLayout>
