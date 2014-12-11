@@ -18,7 +18,7 @@ public class SaveImageDialog extends DialogFragment {
                         // User cancelled the dialog
                         SlidePuzzleActivity.PUZZLE_SOLVED = false;
                         getActivity().finish();
-                        Intent intent = new Intent(getActivity(), TestActivity.class);
+                        Intent intent = new Intent(getActivity(), NotificationsActivity.class);
                         startActivity(intent);
 
                     }
@@ -28,7 +28,7 @@ public class SaveImageDialog extends DialogFragment {
                         // TODO Save the image to the camera roll
                         SlidePuzzleActivity.PUZZLE_SOLVED = false;
                         getActivity().finish();
-                        Intent intent = new Intent(getActivity(), TestActivity.class);
+                        Intent intent = new Intent(getActivity(), NotificationsActivity.class);
                         startActivity(intent);
                     }
                 });
