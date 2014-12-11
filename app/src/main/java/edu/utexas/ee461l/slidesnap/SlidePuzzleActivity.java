@@ -89,6 +89,9 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
         }else{
             Intent intent = new Intent(this, NotificationsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         }
     }
@@ -249,13 +252,16 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                     }
 
             finish();
-            if(activityOver){
-                  // Do nothing
-            }else{
-                Intent intent = new Intent(this, NotificationsActivity.class);
-                startActivity(intent);
-                activityOver = true;
-            }
+//            if(activityOver){
+//                  // Do nothing
+//            }else{
+//                Intent intent = new Intent(this, NotificationsActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                startActivity(intent);
+//                activityOver = true;
+//            }
 
             return false;
         }
@@ -290,7 +296,11 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                     mTimerView.stop();
                     PUZZLE_SOLVED = true;
                     user.increment("trophies");
+                    try{
+                        user.save();
+                    } catch(ParseException e){
 
+                    }
                     // TODO Parse Stuff (Solved)
                     query = ParseQuery.getQuery("imageData");
                           try{

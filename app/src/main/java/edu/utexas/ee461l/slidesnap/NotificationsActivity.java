@@ -78,6 +78,12 @@ public class NotificationsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    protected void onResume(){
+//        adapter.clear();
+//        adapter.addAll(getAllEntries());
+//    }
+
     public ArrayList<PuzzleEntry> getAllEntries(){
         ArrayList<PuzzleEntry> allEntries = new ArrayList<PuzzleEntry>();
         ParseQuery<ParseObject> sentQuery = ParseQuery.getQuery("imageData");

@@ -16,20 +16,14 @@ public class SaveImageDialog extends DialogFragment {
                 .setPositiveButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
-                        SlidePuzzleActivity.PUZZLE_SOLVED = false;
                         getActivity().finish();
-                        Intent intent = new Intent(getActivity(), NotificationsActivity.class);
-                        startActivity(intent);
 
                     }
                 })
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // TODO Save the image to the camera roll
-                        SlidePuzzleActivity.PUZZLE_SOLVED = false;
                         getActivity().finish();
-                        Intent intent = new Intent(getActivity(), NotificationsActivity.class);
-                        startActivity(intent);
                     }
                 });
         // Create the AlertDialog object and return it
