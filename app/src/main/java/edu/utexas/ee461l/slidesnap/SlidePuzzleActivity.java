@@ -321,6 +321,18 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     }
 
     @Override
+    protected void onDestroy(){
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("imageData");
+        try{
+            ParseObject data = query.get(objectID);
+            data.put("status","wrong");
+            data.save();
+        }catch(ParseException e){
+
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 

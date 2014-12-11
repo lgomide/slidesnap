@@ -52,15 +52,16 @@ public class SelectFriendsActivity extends Activity {
             ParseUser currentUser = ParseUser.getCurrentUser();
             String username = currentUser.getUsername();
 
+            Bitmap bmp = BitmapFactory.decodeFile(filePath);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] imageBytes = baos.toByteArray();
+
             for (int i = 0; i < adapter.selectedFriends.size(); i++) {
                 ParseObject imageData = new ParseObject("imageData");
                 imageData.put("status", "unopened");
                 imageData.put("to", adapter.selectedFriends.get(i));
                 imageData.put("from", username);
-                Bitmap bmp = BitmapFactory.decodeFile(filePath);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
                 ParseFile imageFile = new ParseFile(filePath.substring(filePath.lastIndexOf("/") + 1), imageBytes);
                 imageFile.saveInBackground();
                 imageData.put("image", imageFile);
@@ -68,8 +69,7 @@ public class SelectFriendsActivity extends Activity {
             }
         }
         adapter.selectedFriends.clear();
-        Intent i = new Intent(SelectFriendsActivity.this, MainActivity.class);
-        startActivity(i);
+        finish();
     }
 
     @Override

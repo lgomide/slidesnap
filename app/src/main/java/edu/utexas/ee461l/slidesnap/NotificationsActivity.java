@@ -65,12 +65,6 @@ public class NotificationsActivity extends Activity {
         return true;
     }
 
-    @Override
-    public void onRestart(){
-        adapter.clear();
-        adapter.addAll(getAllEntries());
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
