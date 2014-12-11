@@ -29,19 +29,23 @@ public class CreateAccountActivity extends Activity {
         EditText userNameEditText = (EditText) findViewById(R.id.userName2);
         EditText passwordEditText = (EditText) findViewById(R.id.password2);
         String userName = userNameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        try{
-            checkPassword(password);
-            ParseUser user = new ParseUser();
-            user.setUsername(userName);
-            user.setPassword(password);
-            user.put("trophies",0);
-            user.signUp();
-            startActivity(new Intent(CreateAccountActivity.this,MainActivity.class));
-        } catch(ParseException e){
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
-        } catch(PasswordException e){
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        if(!userName.equals("")) {
+            String password = passwordEditText.getText().toString();
+            try {
+                checkPassword(password);
+                ParseUser user = new ParseUser();
+                user.setUsername(userName);
+                user.setPassword(password);
+                user.put("trophies", 0);
+                user.signUp();
+                startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
+            } catch (ParseException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            } catch (PasswordException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(this, "Invalid Username", Toast.LENGTH_SHORT).show();
         }
     }
 

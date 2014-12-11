@@ -54,9 +54,6 @@ public class NotificationsActivity extends Activity {
         listView.setAdapter(adapter);
     }
 
-    public void backToMainPage(View view){
-        startActivity(new Intent(NotificationsActivity.this, MainActivity.class));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

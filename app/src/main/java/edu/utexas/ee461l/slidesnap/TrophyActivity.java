@@ -58,7 +58,5 @@ public class TrophyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void backToMainPage(View view){
-        startActivity(new Intent(TrophyActivity.this, MainActivity.class));
-    }
+
 }

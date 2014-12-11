@@ -21,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Chronometer;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 //import com.example.thomas.edu.utexas.ee461l.slidesnap.slidepuzzle.R;
@@ -278,6 +279,8 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                 boolean moved = mTileView.dropTile(event.getX(), event.getY());
 
                 if (mTileView.checkSolved()) {
+                    ImageButton save = (ImageButton) findViewById(R.id.saveButton);
+                    save.setVisibility(View.VISIBLE);
                     mCompleteView.setImageBitmap(mTileView.getCurrentImage());
                     mCompleteView.setVisibility(View.VISIBLE);
 

@@ -18,13 +18,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center"
-        android:id="@+id/imageButton"
+        android:id="@+id/saveButton"
         android:onClick="toPreferences"
-        android:src="@android:drawable/ic_menu_revert"
+        android:src="@android:drawable/ic_menu_save"
         android:background="@null"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible"/>
         <Chronometer
             android:id="@+id/timer_view"
             android:layout_width="wrap_content"
