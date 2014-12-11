@@ -1,6 +1,7 @@
 package edu.utexas.ee461l.slidesnap;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -30,6 +31,11 @@ public class NotificationsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(SlidePuzzleActivity.gameOver) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            GameOverDialog dialog = new GameOverDialog();
+            dialog.show(ft, "dialog");
+        }
         currentUser = ParseUser.getCurrentUser();
         setContentView(R.layout.activity_notifications);
         View contentView = (View)findViewById(R.id.NotificationsActivity);
