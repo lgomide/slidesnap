@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -19,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -63,10 +65,16 @@ public class SelectFriendsActivity extends Activity {
                 imageData.put("to", adapter.selectedFriends.get(i));
                 imageData.put("from", username);
                 ParseFile imageFile = new ParseFile(filePath.substring(filePath.lastIndexOf("/") + 1), imageBytes);
-                imageFile.saveInBackground();
-                imageData.put("image", imageFile);
-                imageData.saveInBackground();
+                try{
+                    imageFile.save();
+                    imageData.put("image", imageFile);
+                    imageData.save();
+                } catch (ParseException e){
+
+                }
             }
+            File pic = new File(filePath);
+            pic.delete();
         }
         adapter.selectedFriends.clear();
         finish();

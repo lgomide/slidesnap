@@ -81,8 +81,14 @@ public class NotificationsActivity extends Activity {
     @Override
     protected void onRestart(){
         super.onRestart();
+//        try{
+//            Thread.sleep(10);
+//        } catch (InterruptedException e){
+//
+//        }
+        entries = getAllEntries();
         adapter.clear();
-        adapter.addAll(getAllEntries());
+        adapter.addAll(entries);
     }
 
     public ArrayList<PuzzleEntry> getAllEntries(){

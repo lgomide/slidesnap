@@ -241,7 +241,6 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                     try{
                         ParseObject imageData = query.get(objectID);
                         imageData.put("status", "wrong");
-                        imageData.remove("pathUri"); // May need to change
                         imageData.save();
                     }catch (ParseException ex){
                         ex.printStackTrace();
@@ -302,7 +301,6 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                           try{
                               ParseObject imageData = query.get(objectID);
                               imageData.put("status", "correct");
-                              imageData.remove("pathUri"); // May need to change
                               imageData.save();
                           }catch (ParseException ex){
                               ex.printStackTrace();
@@ -332,6 +330,16 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     @Override
     protected void onDestroy(){
         super.onDestroy();
+        if(!mTileView.checkSolved()){
+            query = ParseQuery.getQuery("imageData");
+            try{
+                ParseObject imageData = query.get(objectID);
+                imageData.put("status", "wrong");
+                imageData.save();
+            }catch (ParseException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 
     @Override
