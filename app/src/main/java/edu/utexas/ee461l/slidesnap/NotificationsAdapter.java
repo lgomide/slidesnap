@@ -80,8 +80,9 @@ public class NotificationsAdapter extends ArrayAdapter<PuzzleEntry> {
         }else if (status.equals("SendWrong")) {
             holder.status.setImageResource(R.drawable.sender_x);
             holder.button.setVisibility(View.INVISIBLE);
-        }else if (status.equals("ReceivedUnopened")) {
+        }else if (status.equals("UnopenedReceive")) {
             holder.status.setImageResource(R.drawable.receiver_arrow);
+            holder.button.setVisibility(View.VISIBLE);
         }else if (status.equals("ReceiveRight")) {
             holder.status.setImageResource(R.drawable.receiver_check);
             holder.button.setVisibility(View.INVISIBLE);

@@ -78,11 +78,12 @@ public class NotificationsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onResume(){
-//        adapter.clear();
-//        adapter.addAll(getAllEntries());
-//    }
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        adapter.clear();
+        adapter.addAll(getAllEntries());
+    }
 
     public ArrayList<PuzzleEntry> getAllEntries(){
         ArrayList<PuzzleEntry> allEntries = new ArrayList<PuzzleEntry>();
@@ -112,27 +113,29 @@ public class NotificationsActivity extends Activity {
                     //do received
                     ParseObject entry = receivedResults.remove(0);
                     ParseFile image = (ParseFile) entry.get("image");
-                    File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_DCIM), ".SlideSnap");
-                    if(!mediaFileDir.exists()){
-                        mediaFileDir.mkdirs();
-                    }
-                    File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
-                    byte[] imageBytes = image.getData();
-                    if(!mediaFile.exists()){
-                        FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
-                        fos.write(imageBytes);
-                        fos.close();
-                    }
                     String status = (String) entry.get("status");
+                    String filePath = null;
                     if(status.equals("unopened")){
                         status="UnopenedReceive";
+                        File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
+                                Environment.DIRECTORY_DCIM), ".SlideSnap");
+                        if(!mediaFileDir.exists()){
+                            mediaFileDir.mkdirs();
+                        }
+                        File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
+                        filePath = mediaFile.getPath();
+                        if(!mediaFile.exists()){
+                            byte[] imageBytes = image.getData();
+                            FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
+                            fos.write(imageBytes);
+                            fos.close();
+                        }
                     }else if(status.equals("correct")){
                         status = "ReceiveRight";
                     }else if(status.equals("wrong")){
                         status = "ReceiveWrong";
                     }
-                    allEntries.add(new PuzzleEntry(status,mediaFile.getPath(),(String) entry.get("from"),entry.getObjectId()));
+                    allEntries.add(new PuzzleEntry(status,filePath,(String) entry.get("from"),entry.getObjectId()));
                 }else if((sentResults.get(0).getCreatedAt().after(receivedResults.get(0).getCreatedAt()))) {
                         //do sent
                         ParseObject entry = sentResults.remove(0);
@@ -148,28 +151,30 @@ public class NotificationsActivity extends Activity {
                     }else {
                         //do received
                         ParseObject entry = receivedResults.remove(0);
-                        ParseFile image = (ParseFile) entry.get("image");
-                        File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_DCIM), ".SlideSnap");
-                        if(!mediaFileDir.exists()){
-                            mediaFileDir.mkdirs();
-                        }
-                        File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
-                        byte[] imageBytes = image.getData();
-                        if(!mediaFile.exists()){
-                            FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
-                            fos.write(imageBytes);
-                            fos.close();
-                        }
-                        String status = (String) entry.get("status");
-                        if(status.equals("unopened")){
-                            status="UnopenedReceive";
+                                ParseFile image = (ParseFile) entry.get("image");
+                                String status = (String) entry.get("status");
+                                String filePath = null;
+                                if(status.equals("unopened")){
+                                    status="UnopenedReceive";
+                                    File mediaFileDir = new File(Environment.getExternalStoragePublicDirectory(
+                                            Environment.DIRECTORY_DCIM), ".SlideSnap");
+                                    if(!mediaFileDir.exists()){
+                                        mediaFileDir.mkdirs();
+                                    }
+                                    File mediaFile = new File(mediaFileDir.getPath()+ File.separator + image.getName());
+                                    filePath = mediaFile.getPath();
+                                    if(!mediaFile.exists()){
+                                        byte[] imageBytes = image.getData();
+                                        FileOutputStream fos = new FileOutputStream(mediaFile.getPath());
+                                fos.write(imageBytes);
+                                fos.close();
+                            }
                         }else if(status.equals("correct")){
                             status = "ReceiveRight";
                         }else if(status.equals("wrong")){
                             status = "ReceiveWrong";
                         }
-                        allEntries.add(new PuzzleEntry(status,mediaFile.getPath(),(String) entry.get("from"),entry.getObjectId()));
+                        allEntries.add(new PuzzleEntry(status,filePath,(String) entry.get("from"),entry.getObjectId()));
                     }
                 }
         } catch (com.parse.ParseException e){
