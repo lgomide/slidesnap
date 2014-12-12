@@ -10,6 +10,13 @@
     android:background="#699dd9"
     android:id="@+id/MainActivity">
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/panda_head"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
