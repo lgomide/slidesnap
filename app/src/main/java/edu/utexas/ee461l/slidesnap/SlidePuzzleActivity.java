@@ -320,7 +320,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
         menu.clear();
 
         menu.add(0, MENU_NEW, 0, R.string.menu_new).setIcon(
-                R.drawable.menu_new_game);;
+                R.drawable.menu_new_game);
         menu.add(0, MENU_SCORES, 0, R.string.menu_scores).setIcon(
                 R.drawable.menu_high_scores);
         menu.add(0, MENU_SETTINGS, 0, R.string.menu_settings).setIcon(
@@ -332,14 +332,6 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("imageData");
-        try{
-            ParseObject data = query.get(objectID);
-            data.put("status","wrong");
-            data.save();
-        }catch(ParseException e){
-
-        }
     }
 
     @Override
