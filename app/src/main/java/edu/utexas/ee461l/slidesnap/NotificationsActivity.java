@@ -31,11 +31,7 @@ public class NotificationsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(SlidePuzzleActivity.gameOver) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            GameOverDialog dialog = new GameOverDialog();
-            dialog.show(ft, "dialog");
-        }
+
         currentUser = ParseUser.getCurrentUser();
         setContentView(R.layout.activity_notifications);
         View contentView = (View)findViewById(R.id.NotificationsActivity);

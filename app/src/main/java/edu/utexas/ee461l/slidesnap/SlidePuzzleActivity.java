@@ -58,7 +58,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
     public ParseUser user;
     public ParseQuery<ParseObject> query;
-
+    public static String notificationPathUri;
 
 
     private AnimationListener mCompleteAnimListener = new AnimationListener() {
@@ -120,6 +120,7 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
 
         Bundle extras = getIntent().getExtras();
         String pathUri = extras.getString("pathUri");
+        notificationPathUri = pathUri;
         objectID = extras.getString("objectID");
 
         setCustomLocation(pathUri);

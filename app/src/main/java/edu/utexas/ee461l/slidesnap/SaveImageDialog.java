@@ -5,9 +5,25 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+
+import com.google.common.io.Files;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class SaveImageDialog extends DialogFragment {
+
+    Bitmap largeBitmap;
+    FileOutputStream fileOutputStream = null;
+    BufferedOutputStream bufferedOutputStream = null;
+    int quality = 100;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -24,6 +40,15 @@ public class SaveImageDialog extends DialogFragment {
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // TODO Save the image to the camera roll
+                        String path = SlidePuzzleActivity.notificationPathUri;
+                        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                                Environment.DIRECTORY_PICTURES), "Slidesnap");
+                        File file = new File(path);
+                        try{
+                        File mediaStorage = new File(mediaStorageDir.getPath() + File.separator + file.getName());
+                        Files.move(file,mediaStorage);}
+                        catch(IOException e){
+                        }
                         getActivity().finish();
                     }
                 });
