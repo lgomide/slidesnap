@@ -78,14 +78,17 @@ public class NotificationsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    protected void onResume(){
+//        super.onResume();
+//        entries = getAllEntries();
+//        adapter.clear();
+//        adapter.addAll(entries);
+//    }
+
     @Override
     protected void onRestart(){
         super.onRestart();
-//        try{
-//            Thread.sleep(10);
-//        } catch (InterruptedException e){
-//
-//        }
         entries = getAllEntries();
         adapter.clear();
         adapter.addAll(entries);

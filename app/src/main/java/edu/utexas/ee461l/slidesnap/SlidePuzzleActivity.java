@@ -74,6 +74,11 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
         public void onAnimationStart(Animation animation) {}
     };
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+    }
+
     /** Called when the user clicks the Send button */
     public void toPreferences(View view) {
         finalView = view;
@@ -340,6 +345,8 @@ public class SlidePuzzleActivity extends Activity implements OnKeyListener {
                 ex.printStackTrace();
             }
         }
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 
     @Override
